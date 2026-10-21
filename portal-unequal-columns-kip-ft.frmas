@@ -1,0 +1,178 @@
+{
+ "format": "MAS",
+ "app": "frame",
+ "appName": "Beam-Frame MAS",
+ "studio": "MAS Studio",
+ "kind": "frame2d",
+ "schema": 1,
+ "savedAt": "2026-10-21T16:05:52.548Z",
+ "units": {
+  "base": "SI-kN-m",
+  "length": "m",
+  "force": "kN",
+  "moment": "kN*m",
+  "distributedLoad": "kN/m",
+  "modulus": "GPa",
+  "sectionDimensions": "mm",
+  "customInertia": "1e6 mm^4",
+  "density": "kg/m^3",
+  "display": "kip-ft"
+ },
+ "project": {
+  "title": "Portal frame, columns 12 ft and 15 ft, 10 k at B"
+ },
+ "model": {
+  "grid": {
+   "xs": [
+    {
+     "label": "A",
+     "x": 0
+    },
+    {
+     "label": "C",
+     "x": 3.6576000000000004
+    }
+   ],
+   "ys": [
+    {
+     "label": "D",
+     "y": 0
+    },
+    {
+     "label": "A",
+     "y": 0.9144000000000001
+    },
+    {
+     "label": "B–C",
+     "y": 4.572
+    }
+   ],
+   "snap": 0.5
+  },
+  "materials": [
+   {
+    "id": "mat1",
+    "name": "Structural steel",
+    "E": 200,
+    "nu": 0.3,
+    "rho": 7850
+   }
+  ],
+  "sections": [
+   {
+    "type": "ei",
+    "d": 350,
+    "bf": 180,
+    "tf": 12,
+    "tw": 8,
+    "b": 300,
+    "h": 500,
+    "D": 273,
+    "t": 10,
+    "A": 8000,
+    "Iz": 150,
+    "Iy": 10,
+    "J": 0.5,
+    "depth": 350,
+    "width": 180,
+    "EI": 100000,
+    "EA": 2000000,
+    "eE": 200,
+    "eI": 500,
+    "eA": 10000,
+    "rigid": true,
+    "wsw": 0,
+    "id": "s1",
+    "name": "EI",
+    "material": "mat1"
+   }
+  ],
+  "nodes": [
+   {
+    "id": 1,
+    "x": 0,
+    "y": 0.9144000000000001,
+    "support": "fixed"
+   },
+   {
+    "id": 2,
+    "x": 0,
+    "y": 4.572,
+    "support": "free"
+   },
+   {
+    "id": 3,
+    "x": 3.6576000000000004,
+    "y": 4.572,
+    "support": "free"
+   },
+   {
+    "id": 4,
+    "x": 3.6576000000000004,
+    "y": 0,
+    "support": "rollerX"
+   }
+  ],
+  "members": [
+   {
+    "id": 1,
+    "i": 1,
+    "j": 2,
+    "section": "s1",
+    "releaseI": false,
+    "releaseJ": false,
+    "truss": false
+   },
+   {
+    "id": 2,
+    "i": 2,
+    "j": 3,
+    "section": "s1",
+    "releaseI": false,
+    "releaseJ": false,
+    "truss": false
+   },
+   {
+    "id": 3,
+    "i": 3,
+    "j": 4,
+    "section": "s1",
+    "releaseI": false,
+    "releaseJ": false,
+    "truss": false
+   }
+  ],
+  "loads": [
+   {
+    "id": 1,
+    "case": "P",
+    "on": "node",
+    "node": 2,
+    "Fx": 44.482216152605,
+    "Fy": 0,
+    "Mz": 0
+   }
+  ],
+  "cases": [
+   {
+    "id": "P",
+    "name": "10 k at B",
+    "type": "other",
+    "selfWeight": false
+   }
+  ],
+  "combos": [
+   {
+    "id": "c1",
+    "name": "1.0 × 10 k at B",
+    "factors": {
+     "P": 1
+    }
+   }
+  ]
+ },
+ "settings": {
+  "resultKey": "combo:c1",
+  "display": "model"
+ }
+}

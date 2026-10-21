@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If Beam-Frame MAS helped your study or work, please cite it as below."
+title: "Beam-Frame MAS: Beam and Plane Frame Analysis for Engineering Students"
+type: software
+authors:
+  - given-names: "MD"
+    family-names: "Al Shahriar"
+    affiliation: "Bangladesh University of Engineering and Technology (BUET)"
+version: "1.1.0"
+date-released: "2026-10-21"
+license: MIT
+repository-code: "https://github.com/Al-Shahriar-12/beam-frame-mas"
+url: "https://al-shahriar-12.github.io/beam-frame-mas/"
+abstract: "Free, open-source beam and plane frame analysis in the browser: beam builder, member-by-member EI, EI and EA typed directly, support settlements, exact shear force, bending moment, axial force and deflection diagrams, load combinations, 3D view and PDF export."
+keywords: [structural analysis, beam analysis, frame analysis, stiffness method, support settlement, shear force diagram, bending moment diagram, civil engineering, engineering education]

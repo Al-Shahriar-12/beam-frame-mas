@@ -1,0 +1,201 @@
+{
+ "format": "MAS",
+ "app": "frame",
+ "appName": "Beam-Frame MAS",
+ "studio": "MAS Studio",
+ "kind": "frame2d",
+ "schema": 1,
+ "savedAt": "2026-10-21T16:05:52.518Z",
+ "units": {
+  "base": "SI-kN-m",
+  "length": "m",
+  "force": "kN",
+  "moment": "kN*m",
+  "distributedLoad": "kN/m",
+  "modulus": "GPa",
+  "sectionDimensions": "mm",
+  "customInertia": "1e6 mm^4",
+  "density": "kg/m^3",
+  "display": "kN-m"
+ },
+ "project": {
+  "title": "Fixed beam, 2EI and EI, settlement wL/48EI at c"
+ },
+ "model": {
+  "grid": {
+   "xs": [
+    {
+     "label": "a",
+     "x": 0
+    },
+    {
+     "label": "b",
+     "x": 5
+    },
+    {
+     "label": "c",
+     "x": 10
+    }
+   ],
+   "ys": [
+    {
+     "label": "Beam",
+     "y": 0
+    }
+   ],
+   "snap": 0.5
+  },
+  "materials": [
+   {
+    "id": "mat1",
+    "name": "Structural steel",
+    "E": 200,
+    "nu": 0.3,
+    "rho": 7850
+   }
+  ],
+  "sections": [
+   {
+    "type": "ei",
+    "d": 350,
+    "bf": 180,
+    "tf": 12,
+    "tw": 8,
+    "b": 300,
+    "h": 500,
+    "D": 273,
+    "t": 10,
+    "A": 8000,
+    "Iz": 150,
+    "Iy": 10,
+    "J": 0.5,
+    "depth": 350,
+    "width": 180,
+    "EI": 100000,
+    "EA": 2000000,
+    "eE": 200,
+    "eI": 1000,
+    "eA": 10000,
+    "rigid": true,
+    "wsw": 0,
+    "id": "s2",
+    "name": "2EI",
+    "material": "mat1"
+   },
+   {
+    "type": "ei",
+    "d": 350,
+    "bf": 180,
+    "tf": 12,
+    "tw": 8,
+    "b": 300,
+    "h": 500,
+    "D": 273,
+    "t": 10,
+    "A": 8000,
+    "Iz": 150,
+    "Iy": 10,
+    "J": 0.5,
+    "depth": 350,
+    "width": 180,
+    "EI": 100000,
+    "EA": 2000000,
+    "eE": 200,
+    "eI": 500,
+    "eA": 10000,
+    "rigid": true,
+    "wsw": 0,
+    "id": "s1",
+    "name": "EI",
+    "material": "mat1"
+   }
+  ],
+  "nodes": [
+   {
+    "id": 1,
+    "x": 0,
+    "y": 0,
+    "support": "fixed"
+   },
+   {
+    "id": 2,
+    "x": 5,
+    "y": 0,
+    "support": "free"
+   },
+   {
+    "id": 3,
+    "x": 10,
+    "y": 0,
+    "support": "fixed"
+   }
+  ],
+  "members": [
+   {
+    "id": 1,
+    "i": 1,
+    "j": 2,
+    "section": "s2",
+    "releaseI": false,
+    "releaseJ": false,
+    "truss": false
+   },
+   {
+    "id": 2,
+    "i": 2,
+    "j": 3,
+    "section": "s1",
+    "releaseI": false,
+    "releaseJ": false,
+    "truss": false
+   }
+  ],
+  "loads": [
+   {
+    "id": 1,
+    "case": "D",
+    "on": "member",
+    "member": 1,
+    "type": "dist",
+    "dir": "gravity",
+    "full": true,
+    "w1": 10,
+    "w2": 10,
+    "x1": 0,
+    "x2": 0,
+    "P": 0,
+    "a": 0
+   },
+   {
+    "id": 2,
+    "case": "D",
+    "on": "settle",
+    "node": 3,
+    "dx": 0,
+    "dy": -0.000010416666666666666,
+    "rz": 0
+   }
+  ],
+  "cases": [
+   {
+    "id": "D",
+    "name": "Loads and settlement",
+    "type": "dead",
+    "selfWeight": false
+   }
+  ],
+  "combos": [
+   {
+    "id": "c1",
+    "name": "1.0 × loads and settlement",
+    "factors": {
+     "D": 1
+    }
+   }
+  ]
+ },
+ "settings": {
+  "resultKey": "combo:c1",
+  "display": "model"
+ }
+}
